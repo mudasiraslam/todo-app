@@ -8,10 +8,12 @@
 import NextAuth from "next-auth/next";
 import { authOptions } from "../../../../libs/AuthOptions";
 
-try {
-    const handler = NextAuth(authOptions);
-    export { handler as GET, handler as POST };
-} catch (error) {
-    console.error("Error during NextAuth initialization:", error);
+export const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };
+
+handler.catch((error: any) => {
+    console.error("Error during NextAuth request handling:", error);
     throw error;
-}
+});
+
