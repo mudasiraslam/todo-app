@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  username          String?
+  email             String?   @unique
+  emailVerified DateTime?
+  verificationToken String?
+  tokenExpiry       DateTime?
+  emailChangeToken  String?
+  emailChangeExpiry DateTime?
+
+  passwordResetToken String?
+  passwordResetTokenExpiry DateTime?
+  accessToken       String?
+  name              String?
+  isVerified        Boolean   @default(false)
+  passwordHash      String
+
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  provider  String @default("credentials")
+  image             Bytes?
+  todos     List[]
+  
+}
+
+model List {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  theme     String @default("")
+  task      Task[]
+  email String
+  user      User   @relation(fields: [email], references: [email], onDelete: Cascade)
+}
+
+model Task {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  isCompleted Boolean @default(false)
+  listId      String  @db.ObjectId
+  list        List    @relation(fields: [listId], references: [id], onDelete: Cascade)
+}
+
+
+
