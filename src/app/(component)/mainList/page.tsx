@@ -18,7 +18,7 @@ const AddTodo: React.FC = () => {
   } = useTodoForm();
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
       <div className={`bg-custom-radical bg-dotted-size ${selectedTheme?.bgClass || 'bg-vibrantSpectrumBackground'}`}>
         <div className={` ${selectedTheme?.textClass || ''} bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6`}>
           <button onClick={() => router.back()} className='text-xl md:text-5xl '>
