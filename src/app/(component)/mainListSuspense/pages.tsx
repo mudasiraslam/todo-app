@@ -3,7 +3,7 @@ import MainList from '../mainList/page'
 
 export default function MainListPage() {
     return (
-        <Suspense >
+        <Suspense fallback={(<div>Loading...</div>)}>
             <MainList />
         </Suspense>
     )
