@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -27,57 +27,59 @@ const ResetPassword: React.FC = () => {
     } = useResetPasswordForm();
 
     return (
-        <main
-            className={`${color.bgColor} bg-custom-radical bg-dotted-size `}
-        >
-            <div
-                className={`flex justify-between px-[24px] bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 text-white`}
+        <Suspense fallback={<div>Loading...</div>}>
+            <main
+                className={`${color.bgColor} bg-custom-radical bg-dotted-size `}
             >
-                <button
-                    onClick={() => router.back()}
-                    className='text-xl md:text-5xl '
+                <div
+                    className={`flex justify-between px-[24px] bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 text-white`}
                 >
-                    <BackIcon />
-                </button>
-            </div>
-            <div className='min-h-screen'>
-                <div className='max-w-[330px] mx-auto space-y-4 md:space-y-4 py-12'>
-                    <div>
-                        <Label htmlFor="newPassword" text="New Password" />
-                        <InputField
-                            className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px]`}
-                            id="newPassword"
-                            type="password"
-                            placeholder="Enter your new password"
-                            value={newPassword}
-                            onChange={handleChangeNewPassword}
-                            disabled={loading}
-                        />
-                    </div>
-                    <div>
-                        <Label htmlFor="confirmPassword" text="Confirm Password" />
-                        <InputField
-                            className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px]`}
-                            id="confirmPassword"
-                            type="password"
-                            placeholder="Confirm your new password"
-                            value={confirmPassword}
-                            onChange={handleChangeConfirmPassword}
-                            disabled={loading}
-                        />
-                    </div>
-                    <div className='py-3'>
-                        <button
-                            onClick={() => handleResetPassword(resetToken, axios, toast, router)}
-                            disabled={loading}
-                            className={`rounded-full px-4 py-1 bg-transparent w-full font-medium mb-3 ${color.textInput} border-4 ${color.inputBorder}`}
-                        >
-                            {loading ? 'Resetting Password...' : 'Reset Password'}
-                        </button>
+                    <button
+                        onClick={() => router.back()}
+                        className='text-xl md:text-5xl '
+                    >
+                        <BackIcon />
+                    </button>
+                </div>
+                <div className='min-h-screen'>
+                    <div className='max-w-[330px] mx-auto space-y-4 md:space-y-4 py-12'>
+                        <div>
+                            <Label htmlFor="newPassword" text="New Password" />
+                            <InputField
+                                className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px]`}
+                                id="newPassword"
+                                type="password"
+                                placeholder="Enter your new password"
+                                value={newPassword}
+                                onChange={handleChangeNewPassword}
+                                disabled={loading}
+                            />
+                        </div>
+                        <div>
+                            <Label htmlFor="confirmPassword" text="Confirm Password" />
+                            <InputField
+                                className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px]`}
+                                id="confirmPassword"
+                                type="password"
+                                placeholder="Confirm your new password"
+                                value={confirmPassword}
+                                onChange={handleChangeConfirmPassword}
+                                disabled={loading}
+                            />
+                        </div>
+                        <div className='py-3'>
+                            <button
+                                onClick={() => handleResetPassword(resetToken, axios, toast, router)}
+                                disabled={loading}
+                                className={`rounded-full px-4 py-1 bg-transparent w-full font-medium mb-3 ${color.textInput} border-4 ${color.inputBorder}`}
+                            >
+                                {loading ? 'Resetting Password...' : 'Reset Password'}
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </Suspense>
     );
 };
 
