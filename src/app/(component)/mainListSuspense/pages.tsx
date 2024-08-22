@@ -1,10 +1,12 @@
 import { Suspense } from "react";
 import MainList from '../mainList/page'
 
-export default function MainListPage() {
+function MainListPage() {
     return (
-        <Suspense fallback={(<div>Loading...</div>)}>
+        <Suspense >
             <MainList />
         </Suspense>
     )
 }
+
+export default MainListPage
