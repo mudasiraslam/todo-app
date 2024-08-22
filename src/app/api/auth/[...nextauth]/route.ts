@@ -8,9 +8,7 @@ import prismadb from "../../../../libs/prismadb";
 import { NextAuthOptions } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
-  providers: [
-    // Add your providers here, e.g., GoogleProvider
-  ],
+  providers: [],
   callbacks: {
     async session({ session, token, user }: any) {
       const dbUser = await prismadb.user.findUnique({
@@ -19,6 +17,5 @@ export const authOptions: NextAuthOptions = {
       session.user.id = dbUser?.id;
       return session;
     },
-    // Other callbacks like signIn, jwt, etc., can also be included
   },
 };
