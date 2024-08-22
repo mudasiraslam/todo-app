@@ -81,6 +81,7 @@ export const authOptions: AuthOptions = {
         }
       } catch (error: any) {
         console.error("Error in Provider callbacks!", error);
+        return false;
       }
       return true;
     },
