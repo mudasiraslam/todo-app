@@ -6,11 +6,20 @@
 // export { handler as GET, handler as POST }
 
 
+import prismadb from "../../../../libs/prismadb";
 
-import { authOptions } from "../../../../libs/AuthOptions";
-import NextAuth from "next-auth/next";
+export const authOptions = {
+    providers: [
 
-const handler = NextAuth(authOptions);
+    ],
+    callbacks: {
+        async session({ session, token, user }: any) {
 
-export { handler as GET, handler as POST }
-
+            const dbUser = await prismadb.user.findUnique({
+                where: { email: session.user.email },
+            });
+            session.user.id = dbUser?.id;
+            return session;
+        },
+    },
+};
