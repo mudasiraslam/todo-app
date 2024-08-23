@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
 
         return new NextResponse("Password changed successfully", { status: 200 });
     } catch (error: any) {
-        console.error("CHANGE_PASSWORD_ERROR:", error);
+        console.log("CHANGE_PASSWORD_ERROR:", error);
         return new NextResponse("An error occurred while changing the password", { status: 500 });
     }
 }
