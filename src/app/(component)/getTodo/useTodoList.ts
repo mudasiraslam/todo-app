@@ -47,7 +47,7 @@ const useTodoList = () => {
     currentTitle: string,
     theme: string
   ) => {
-    const url = `/mainList?id=${todoId}&title=${encodeURIComponent(
+    const url = `/add-todo?id=${todoId}&title=${encodeURIComponent(
       currentTitle
     )}&theme=${theme}`;
     router.push(url);
