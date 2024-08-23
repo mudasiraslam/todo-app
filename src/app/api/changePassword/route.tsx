@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
 
         const session = await getServerSession(authOptions);
         if (!session || !session.user?.email) {
-            return new NextResponse("Unauthorized", { status: 401 });
+            return new NextResponse("Unauthorized", { status: 400 });
         }
 
         const user = await prismadb.user.findFirst({
@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
         });
 
         if (!user) {
+            // return new NextResponse("User not found", { status: 404 });
             return new NextResponse("User not found", { status: 404 });
         }
 
@@ -32,7 +33,8 @@ export async function POST(request: NextRequest) {
 
         return new NextResponse("Password changed successfully", { status: 200 });
     } catch (error: any) {
-        console.error("CHANGE_PASSWORD_ERROR:", error);
-        return new NextResponse("An error occurred while changing the password", { status: 500 });
+        // console.error("CHANGE_PASSWORD_ERROR:", error);
+        // return new NextResponse("An error occurred while changing the password", { status: 500 });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
