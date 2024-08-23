@@ -5,12 +5,12 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
-import BackIcon from '../../../public/assets/icons/backIcon';
-import Label from '../(component)/lableInput/Label';
-import InputField from '../(component)/inputField/InputField';
-import useTheme from "../(component)/themes/useThemes";
+import BackIcon from '../../../../public/assets/icons/backIcon';
+import Label from '../lableInput/Label';
+import InputField from '../inputField/InputField';
+import useTheme from "../themes/useThemes";
 import { useResetPasswordForm } from './useResetPassword';
-import { color } from '../constants/color';
+import { color } from '../../constants/color';
 
 const ResetPassword: React.FC = () => {
     const router = useRouter();
