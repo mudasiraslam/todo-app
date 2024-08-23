@@ -3,6 +3,7 @@ import prismadb from "../../../libs/prismadb";
 import bcrypt from "bcrypt";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../libs/AuthOptions";
+import { ApiResponse } from "@/app/type/type.todo";
 
 export async function POST(request: NextRequest) {
     try {
@@ -12,7 +13,7 @@ export async function POST(request: NextRequest) {
 
         const session = await getServerSession(authOptions);
         if (!session || !session.user?.email) {
-            return new NextResponse("Unauthorized", { status: 400 });
+            return new NextResponse<ApiResponse>("Unauthorized", { status: 400 });
         }
 
         const user = await prismadb.user.findFirst({
@@ -21,7 +22,7 @@ export async function POST(request: NextRequest) {
 
         if (!user) {
             // return new NextResponse("User not found", { status: 404 });
-            return new NextResponse("User not found", { status: 404 });
+            return new NextResponse<ApiResponse>("User not found", { status: 404 });
         }
 
         const hashedNewPassword = await bcrypt.hash(newPassword, 12);
@@ -31,7 +32,7 @@ export async function POST(request: NextRequest) {
             data: { passwordHash: hashedNewPassword },
         });
 
-        return new NextResponse("Password changed successfully", { status: 200 });
+        return new NextResponse<ApiResponse>("Password changed successfully", { status: 200 });
     } catch (error: any) {
         // console.error("CHANGE_PASSWORD_ERROR:", error);
         // return new NextResponse("An error occurred while changing the password", { status: 500 });

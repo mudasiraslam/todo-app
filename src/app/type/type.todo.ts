@@ -83,3 +83,8 @@ export interface Task {
   title: string;
   completed: boolean;
 }
+
+export type ApiResponse = {
+  message: string;
+  success: boolean;
+};
