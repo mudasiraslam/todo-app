@@ -50,7 +50,7 @@ const useSignUpForm = () => {
 
   return {
     email,
-    setEmail: (value: string) => setEmail(value.toLowerCase()), // Automatically convert to lowercase
+    setEmail: (value: string) => setEmail(value.toLowerCase()),
     password,
     setPassword,
     confirmPassword,
