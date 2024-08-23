@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams, useRouter } from "next/navigation";
-import { fetchTasks, addTask, deleteTask } from "../../redux/taskSlice";
-import { RootState, AppDispatch } from "../../redux/store";
+import { fetchTasks, addTask, deleteTask } from "../redux/taskSlice";
+import { RootState, AppDispatch } from "../redux/store";
 import toast from "react-hot-toast";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { themes } from "../themes/theme";
-import { Theme } from "../../type/type.todo";
+import { themes } from "../(component)/themes/theme";
+import { Theme } from "../type/type.todo";
 
 export const useTaskPage = () => {
   const searchParams = useSearchParams();

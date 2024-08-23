@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
-import Navbar from '../navbar/Navbar';
-import GetTodo from "../getTodo/getTodo";
+import Navbar from '../(component)/navbar/Navbar';
+import GetTodo from "../(component)/getTodo/getTodo";
 import Link from 'next/link';
-import TuneIcon from '../../../../public/assets/tuneIcon';
-import useTheme from "../../(component)/themes/useThemes";
+import TuneIcon from '../../../public/assets/tuneIcon';
+import useTheme from "../(component)/themes/useThemes";
 
 const ViewLists = () => {
     const { currentTheme } = useTheme();

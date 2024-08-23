@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import React from "react";
 import { authOptions } from "../../libs/AuthOptions";
-import ViewLists from "../(component)/viewLists/viewLists";
+import ViewLists from "../viewLists/viewLists";
 
 
 export default async function Home() {

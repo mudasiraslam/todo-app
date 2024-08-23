@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import BackIcon from '../../../../public/assets/icons/backIcon';
+import BackIcon from '../../../public/assets/icons/backIcon';
 import SyncLoader from "react-spinners/SyncLoader";
 import { useTaskPage } from './useTaskPage';
 
