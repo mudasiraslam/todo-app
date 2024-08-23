@@ -27,7 +27,8 @@ const ResetPassword: React.FC = () => {
     } = useResetPasswordForm();
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense>
+
             <main
                 className={`${color.bgColor} bg-custom-radical bg-dotted-size `}
             >

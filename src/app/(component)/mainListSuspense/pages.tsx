@@ -5,7 +5,7 @@ import MainList from '../mainList/page'
 
 function MainListPage() {
     return (
-        <Suspense >
+        <Suspense>
             <MainList />
         </Suspense>
     )
