@@ -7,7 +7,7 @@ import Image from 'next/image'
 function GoogleBtn() {
     const signInWithGoogle = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        signIn("google")
+        signIn("google", { callbackUrl: "http://localhost:3000/" })
     }
     return (
         <>
