@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import { addTodo, updateTodo, fetchTodoList } from "../redux/todoListSlice";
-import type { AppDispatch } from "../redux/store";
+import { addTodo, updateTodo, fetchTodoList } from "../../redux/todoListSlice";
+import type { AppDispatch } from "../../redux/store";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { themes } from "../(component)/themes/theme";
-import { Theme } from "../type/type.todo";
+import { themes } from "../themes/theme";
+import { Theme } from "../../type/type.todo";
 
 const useTodoForm = () => {
   const [title, setTitle] = useState("");

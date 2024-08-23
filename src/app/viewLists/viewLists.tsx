@@ -27,7 +27,7 @@ const ViewLists = () => {
                     <span className={`relative left-0 ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}>.</span>
                 </h1>
                 <GetTodo />
-                <Link href="/mainList">
+                <Link href="/add-todo">
                     <button
                         className={`mt-5 text-sm md:text-2xl font-medium rounded-full ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'} ${currentTheme?.bgClass || 'border-vibrantSpectrumAccent'}`}
                     >

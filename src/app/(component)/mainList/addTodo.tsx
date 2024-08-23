@@ -2,8 +2,8 @@
 
 import React from 'react';
 import useTodoForm from './useMainList';
-import BackIcon from '../../../public/assets/icons/backIcon';
-import { themes } from '../(component)/themes/theme';
+import BackIcon from '../../../../public/assets/icons/backIcon';
+import { themes } from '../themes/theme';
 
 const AddTodo: React.FC = () => {
   const {
