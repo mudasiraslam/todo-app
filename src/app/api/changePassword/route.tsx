@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
 
         const session = await getServerSession(authOptions);
         if (!session || !session.user?.email) {
-            return new NextResponse<ApiResponse>("Unauthorized", { status: 400 });
+            return new NextResponse("Unauthorized", { status: 400 });
         }
 
         const user = await prismadb.user.findFirst({
