@@ -24,16 +24,8 @@ export const mailer = async ({ email, emailType, userId, token }: any) => {
             },
         });
 
-        // const verificationLink = `${process.env.NEXTAUTH_URL}/verify-email?token=${token}`;
-        // console.log(verificationLink);
-
-        let verificationLink;
-
-        if (emailType === "VERIFY") {
-            verificationLink = `${process.env.NEXTAUTH_URL}/email-verify?token=${token}`;
-        } else if (emailType === "RESET") {
-            verificationLink = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`;
-        }
+        const verificationLink = `${process.env.NEXTAUTH_URL}/verify-email?token=${token}`;
+        console.log(verificationLink);
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
