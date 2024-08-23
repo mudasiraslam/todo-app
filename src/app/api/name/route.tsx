@@ -9,7 +9,7 @@ export async function PUT(request: NextRequest) {
             throw new Error("Name is required");
         }
 
-        const user = await prisma.user.update({
+        const user = await prismadb.user.update({
             where: {
                 email,
             },
