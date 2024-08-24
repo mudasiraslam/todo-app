@@ -25,7 +25,7 @@ export const mailer = async ({ email, emailType, userId, token }: any) => {
         });
 
         const verificationLink = `${process.env.NEXTAUTH_URL}/verify-email?token=${token}`;
-        console.log(verificationLink);
+
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
@@ -37,7 +37,7 @@ export const mailer = async ({ email, emailType, userId, token }: any) => {
         const mailResponse = await transporter.sendMail(mailOptions);
         return mailResponse;
     } catch (error: any) {
-        console.log("Mailer Error: ", error);
+
         throw new Error(error.message);
     }
 }

@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
         },
         );
     } catch (error: any) {
-        console.error('Error in /api/changeEmail:', error);
+
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 

@@ -7,7 +7,6 @@ export default function logout() {
         <div className='bg-orange-500 rounded cursor-pointer p-3 text-center m-4' onClick={() => {
             signOut()
         }}>
-
             Logout
         </div>
     )

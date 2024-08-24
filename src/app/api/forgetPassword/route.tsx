@@ -34,11 +34,11 @@ export async function POST(request: NextRequest) {
             where: { email },
             data: {
                 passwordResetToken: verificationToken,
-                passwordResetTokenExpiry: new Date(Date.now() + 3600000), // 1 hour from now
+                passwordResetTokenExpiry: new Date(Date.now() + 3600000),
             },
         });
 
-        const verificationLink = `${process.env.NEXTAUTH_URL}/resetPassword?token=${verificationToken}`;
+        const verificationLink = `${process.env.NEXTAUTH_URL}/reset-password?token=${verificationToken}`;
         console.log(verificationLink);
 
         const mailOptions = {
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
         await transporter.sendMail(mailOptions);
         return new NextResponse("The reset token has been sent to your email", { status: 200 });
     } catch (error: any) {
-        console.log("FORGET_PASSWORD", error);
+
         return new NextResponse(error.message, { status: 500 });
     }
 }

@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json("Profile updated successfully", { status: 200 });
     } catch (error: any) {
-        console.error("Error updating profile:", error);
+
         return NextResponse.json({ error: "Something went wrong", details: error.message }, { status: 500 });
     }
 }

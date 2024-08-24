@@ -21,11 +21,9 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    console.log('New List Created:', newList);
 
     return new NextResponse(JSON.stringify({ message: 'List created successfully' }), { status: 201 });
   } catch (error: any) {
-    console.error('AddTodo API Error:', error);
     return new NextResponse(error.message, { status: 500 });
   }
 }

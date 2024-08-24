@@ -63,7 +63,6 @@ export async function POST(request: NextRequest) {
             return new NextResponse("Invalid request", { status: 400 });
         }
     } catch (error: any) {
-        console.error("PASSWORD_UPDATE_ERROR:", error);
         return new NextResponse("An error occurred while updating the password", { status: 500 });
     }
 }

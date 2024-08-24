@@ -47,7 +47,6 @@ export async function POST(req: Request) {
         }
 
     } catch (error: any) {
-        console.log("Register_User", error);
         return new NextResponse(error.message, { status: 500 });
     }
 }
