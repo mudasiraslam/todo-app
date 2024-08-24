@@ -5,10 +5,10 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: "Password Reset Page",
-    description: ".",
+    description: "You can Change Reset After getting the token.",
     openGraph: {
-        title: "Settings Page - Todo App",
-        description: "Change your Profile Pic, Name, Email, and Password.",
+        title: "Password Reset Page - Todo App",
+        description: "You can Change Reset After getting the token.",
     },
 };
 
