@@ -7,7 +7,7 @@ function GoogleBtn() {
     const signInWithGoogle = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const callbackUrl =
-            process.env.NEXTAUTH_URL || 'http://localhost:3000/';
+            process.env.NEXT_PUBLIC_NEXTAUTH_URL || 'http://localhost:3000/';
         signIn('google', { callbackUrl });
     };
 
