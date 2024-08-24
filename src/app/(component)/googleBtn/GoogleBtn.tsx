@@ -8,7 +8,6 @@ function GoogleBtn() {
         e.preventDefault();
         const callbackUrl =
             process.env.NEXT_PUBLIC_NEXTAUTH_URL || 'http://localhost:3000/';
-
         signIn('google', { callbackUrl });
     };
 
