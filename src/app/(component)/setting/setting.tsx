@@ -8,7 +8,7 @@ import { LogoutIcon } from '../../../../public/assets/icons/logout';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import BackIcon from '../../../../public/assets/icons/backIcon';
-import useTheme from "../../(component)/themes/useThemes";
+import useTheme from "../themes/useThemes";
 import { useUserData, useImage, useProfileUpdate, useLogout } from './useSetting';
 
 const Settings: React.FC = () => {
