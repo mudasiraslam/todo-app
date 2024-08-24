@@ -3,11 +3,11 @@ import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "Settings Page",
-    description: "Change your Profile Pic, Name, Email, and Password.",
+    title: "Todo Page",
+    description: "Add Todo List Delete, Update and Add",
     openGraph: {
-        title: "Settings Page - Todo App",
-        description: "Change your Profile Pic, Name, Email, and Password.",
+        title: "MainList - Todo App",
+        description: "You can add todo list & There Task.",
     },
 };
 const AddTodo = dynamic(() => import('../(component)/mainList/addTodo'), {
