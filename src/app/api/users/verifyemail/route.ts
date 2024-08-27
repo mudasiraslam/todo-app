@@ -29,11 +29,20 @@ export async function POST(request: NextRequest) {
     }
 
     const isTokenValid = await bcrypt.compare(token, user.verificationToken);
-
+    if (!user.verificationToken) {
+      return new NextResponse(
+        JSON.stringify({ error: "Token missing for user" }),
+        { status: 400 }
+      );
+    }
     if (!isTokenValid) {
       return new NextResponse("Invalid token", { status: 400 });
     }
-
+    if (!isTokenValid) {
+      return new NextResponse(JSON.stringify({ error: "Token mismatch" }), {
+        status: 400,
+      });
+    }
     await prismadb.user.update({
       where: { id: user.id },
       data: {

@@ -24,7 +24,7 @@ export const mailer = async ({ email, emailType, userId, token }: any) => {
             },
         });
 
-        const verificationLink = `${process.env.NEXTAUTH_URL}/verify-email?token=${token}`;
+        const verificationLink = `${process.env.NEXTAUTH_URL}/verifyEmail?token=${token}`;
 
 
         const mailOptions = {

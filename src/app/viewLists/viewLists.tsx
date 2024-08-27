@@ -5,16 +5,23 @@ import GetTodo from "../(component)/getTodo/getTodo";
 import Link from 'next/link';
 import TuneIcon from '../../../public/assets/tuneIcon';
 import useTheme from "../(component)/themes/useThemes";
+import { themes } from '../(component)/themes/theme';
 
 const ViewLists = () => {
-    const { currentTheme } = useTheme();
+    const { currentTheme, changeTheme } = useTheme();
+    const handleThemeChange = () => {
+        const currentThemeIndex = themes.findIndex(theme => theme.value === currentTheme?.value);
+        const nextThemeIndex = (currentThemeIndex + 1) % themes.length;
+        const nextTheme = themes[nextThemeIndex];
+        changeTheme(nextTheme.value);
+    };
 
     return (
         <main
-            className={`bg-custom-radical bg-dotted-size min-h-screen ${currentTheme?.bgClass || "bg-vibrantSpectrumBackground"}`}
+            className={`bg-custom-radical bg-dotted-size min-h-screen  ${currentTheme?.bgClass} ${currentTheme?.borderClass}`}
         >
             <div className={`bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 flex justify-between items-center p-6 ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
-                <Navbar />
+                <div onClick={handleThemeChange}> <Navbar /></div>
                 <Link href={'/setting'}>
                     <TuneIcon />
                 </Link>
