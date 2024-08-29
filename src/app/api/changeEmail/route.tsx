@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from '../../../libs/prismadb';
+import { ApiResponse } from "@/app/type/type.todo";
 
 
 export async function POST(request: NextRequest) {
@@ -35,9 +36,14 @@ export async function POST(request: NextRequest) {
             status: 201,
         },
         );
-    } catch (error: any) {
-
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    } catch (error) {
+        return NextResponse.json<ApiResponse>(
+            {
+                message: `Error ${error}`,
+                success: false,
+            },
+            { status: 500 }
+        );
     }
 
 }

@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -12,10 +11,7 @@ import { color } from '../../constants/color';
 
 export default function SignUpPage() {
     const {
-        email, setEmail,
-        password, setPassword,
-        confirmPassword, setConfirmPassword,
-        name, setName,
+        inputFields,
         loading, register
     } = useSignUpForm();
 
@@ -30,57 +26,20 @@ export default function SignUpPage() {
                         <div className=''>
                             <div className='px-4'>
                                 <form onSubmit={register} className='max-w-[330px] mx-auto space-y-4 md:space-y-4'>
-                                    <div className="">
-                                        <Label htmlFor="name" text="Name" />
-                                        <InputField
-                                            className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px] `}
-                                            id="name"
-                                            type="text"
-                                            placeholder="Name"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
-                                            disabled={loading}
-                                        />
-                                    </div>
-
-                                    <div className="">
-                                        <Label htmlFor="email" text="Email" />
-                                        <InputField
-                                            className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px] `}
-                                            id="email"
-                                            type="email"
-                                            placeholder="Email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            disabled={loading}
-                                        />
-                                    </div>
-
-                                    <div className="">
-                                        <Label htmlFor="password" text="Password" />
-                                        <InputField
-                                            className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px] `}
-                                            id="password"
-                                            type="password"
-                                            placeholder="Password"
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                            disabled={loading}
-                                        />
-                                    </div>
-
-                                    <div className="">
-                                        <Label htmlFor="confirmPassword" text="Confirm Password" />
-                                        <InputField
-                                            className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono ${color.textInput} focus:outline-none  border-4 ${color.inputBorder} rounded-[30px] `}
-                                            id="confirmPassword"
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                            value={confirmPassword}
-                                            onChange={(e) => setConfirmPassword(e.target.value)}
-                                            disabled={loading}
-                                        />
-                                    </div>
+                                    {inputFields.map((field) => (
+                                        <div key={field.id} className="">
+                                            <Label htmlFor={field.id} text={field.label} />
+                                            <InputField
+                                                className={`w-full py-1 px-4 bg-transparent placeholder-plex-mono focus:outline-none ${color.textInput} border-4 ${color.inputBorder} rounded-[30px] `}
+                                                id={field.id}
+                                                type={field.type}
+                                                placeholder={field.placeholder}
+                                                value={field.value}
+                                                onChange={field.onChange}
+                                                disabled={loading}
+                                            />
+                                        </div>
+                                    ))}
 
                                     <div>
                                         <GoogleBtn />
@@ -90,12 +49,12 @@ export default function SignUpPage() {
                                         <button
                                             disabled={loading}
                                             type="submit"
-                                            className="w-full font-plex-mono bg-orange-500 text-[#232020] p-2 rounded-[30px] flex items-center justify-center"
+                                            className={`w-full font-plex-mono ${color.forgetPassbg} ${color.forgetPassText} p-2 rounded-[30px] flex items-center justify-center`}
                                         >
                                             {loading ? 'Loading...' : 'Sign up'}
                                         </button>
-                                        <label htmlFor="account" className="block font-medium px-3 font-plex-mono text-[18px] mb-2 mt-2 text-[#F4F4F4]">
-                                            Already have an account? <Link href={"/signin"} className="text-customOrange">Log In</Link>
+                                        <label htmlFor="account" className={`block font-medium px-3 font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}>
+                                            Already have an account? <Link href={"/signin"} className={`${color.signupText}`}>Log In</Link>
                                         </label>
                                     </div>
 

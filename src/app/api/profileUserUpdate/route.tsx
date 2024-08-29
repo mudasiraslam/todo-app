@@ -2,10 +2,11 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import prisma from '../../../libs/prismadb';
+import { UserData } from "@/app/type/type.todo";
 
 export async function POST(request: NextRequest) {
     try {
-        const reqBody = await request.json();
+        const reqBody = await request.json() as UserData;
         const { email, name, imageBuffer } = reqBody;
 
 
@@ -14,7 +15,8 @@ export async function POST(request: NextRequest) {
         }
 
 
-        const updateData: any = { name };
+
+        const updateData: { name?: string; image?: Buffer } = { name };
 
         if (imageBuffer) {
             updateData.image = Buffer.from(imageBuffer, "base64");
@@ -32,8 +34,8 @@ export async function POST(request: NextRequest) {
         }
 
         return NextResponse.json("Profile updated successfully", { status: 200 });
-    } catch (error: any) {
+    } catch (error) {
 
-        return NextResponse.json({ error: "Something went wrong", details: error.message }, { status: 500 });
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 }

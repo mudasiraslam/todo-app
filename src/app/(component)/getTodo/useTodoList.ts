@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, fetchTodoList } from "../../redux/todoListSlice";
-import { RootState, AppDispatch } from "../../redux/store";
+import { deleteTask, fetchTodoList } from "../../../redux/todoListSlice";
+import { RootState, AppDispatch } from "../../../redux/store";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

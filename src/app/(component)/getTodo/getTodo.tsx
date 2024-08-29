@@ -3,6 +3,7 @@
 import React from 'react';
 import useTodoList from './useTodoList';
 import useTheme from '../../(component)/themes/useThemes';
+import { color } from '@/app/constants/color';
 
 const TodoList: React.FC = () => {
   const { todos, status, error, handleDeleteTask, handleUpdateClick, handleTitleClick } = useTodoList();
@@ -13,7 +14,7 @@ const TodoList: React.FC = () => {
   }
 
   if (status === 'failed') {
-    return <div className='text-red-700 mb-10'>Error: {error}</div>;
+    return <div >Error: {error}</div>;
   }
 
   return (
@@ -27,24 +28,24 @@ const TodoList: React.FC = () => {
             <span className='relative inline-block'>
               <p
                 onClick={() => handleTitleClick(todo.id, todo.title, todo.theme)}
-                className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'} cursor-pointer`}
+                className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || `${color.defaultVibrantText}`} cursor-pointer`}
               >
                 {todo.title}
               </p>
               <span
-                className={`absolute left-0 right-0 bottom-1 border-b-4 ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}
+                className={`absolute left-0 right-0 bottom-1 border-b-4 ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`}`}
               />
             </span>
             <div className='mb-2'>
               <button
                 onClick={() => handleUpdateClick(todo.id, todo.title, todo.theme)}
-                className={`mt-3 text-sm py-1 px-4 border-4 rounded-full ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'} ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}
+                className={`mt-3 text-sm py-1 px-4 border-4 rounded-full ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`} ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}
               >
                 Update
               </button>
               <button
                 onClick={() => handleDeleteTask(todo.id)}
-                className={`mt-3 text-sm py-1 px-4 border-4 rounded-full ml-5 ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'} ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}
+                className={`mt-3 text-sm py-1 px-4 border-4 rounded-full ml-5 ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`} ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}
               >
                 Delete
               </button>

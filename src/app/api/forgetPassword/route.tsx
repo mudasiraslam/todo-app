@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from '../../../libs/prismadb';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
+import { ApiResponse } from "@/app/type/type.todo";
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -50,8 +51,13 @@ export async function POST(request: NextRequest) {
 
         await transporter.sendMail(mailOptions);
         return new NextResponse("The reset token has been sent to your email", { status: 200 });
-    } catch (error: any) {
-
-        return new NextResponse(error.message, { status: 500 });
+    } catch (error) {
+        return NextResponse.json<ApiResponse>(
+            {
+                message: `Error ${error}`,
+                success: false,
+            },
+            { status: 500 }
+        );
     }
 }

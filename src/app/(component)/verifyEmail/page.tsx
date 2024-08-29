@@ -9,7 +9,7 @@ function VerifyEmail() {
 
     return (
         <Suspense>
-            <div className="flex flex-col items-center justify-center min-h-screen py-2 ">
+            <div className={`flex flex-col items-center justify-center min-h-screen py-2 bg-custom-radical bg-dotted-size ${color.bgColor}`}>
                 <h1 className={`text-3xl  ${color.textVerified}`}> Verify Email</h1>
                 {
                     verifed ? (

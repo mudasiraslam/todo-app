@@ -7,5 +7,5 @@ const VerifyEmail = dynamic(() => import('../(component)/verifyEmail/page'), {
 });
 
 export default function Page() {
-    // return <VerifyEmail />;
+    return <VerifyEmail />;
 }

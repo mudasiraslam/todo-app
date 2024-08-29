@@ -37,7 +37,6 @@ export const useUserData = () => {
         }
       } catch (error) {
         toast.error("Failed to load user data");
-        console.error("Error fetching user data:", error);
       }
     };
 

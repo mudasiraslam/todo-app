@@ -16,6 +16,44 @@ const useSignUpForm = () => {
     signOut({ redirect: false });
   }, []);
 
+  const inputFields = [
+    {
+      id: "name",
+      label: "Name",
+      type: "text",
+      placeholder: "Name",
+      value: name,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setName(e.target.value),
+    },
+    {
+      id: "email",
+      label: "Email",
+      type: "email",
+      placeholder: "Email",
+      value: email,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setEmail(e.target.value),
+    },
+    {
+      id: "password",
+      label: "Password",
+      type: "password",
+      placeholder: "Password",
+      value: password,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setPassword(e.target.value),
+    },
+    {
+      id: "confirmPassword",
+      label: "Confirm Password",
+      type: "password",
+      placeholder: "Confirm Password",
+      value: confirmPassword,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+        setConfirmPassword(e.target.value),
+    },
+  ];
   const register = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -59,6 +97,7 @@ const useSignUpForm = () => {
     setName,
     loading,
     register,
+    inputFields,
   };
 };
 

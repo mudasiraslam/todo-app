@@ -53,7 +53,10 @@ export async function POST(request: NextRequest) {
     });
 
     return new NextResponse("Email verified successfully", { status: 200 });
-  } catch (error: any) {
-    return new NextResponse(error.message, { status: 500 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Something went wrong" },
+      { status: 500 }
+    );
   }
 }

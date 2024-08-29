@@ -26,9 +26,9 @@ export async function POST(request: NextRequest) {
             image: user.image ? user.image.toString("base64") : null,
         });
 
-    } catch (error: any) {
-        return NextResponse.json({ message: error.message }, { status: 500 }
-        );
+    } catch (error) {
+
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 }
 

@@ -15,8 +15,9 @@ export async function DELETE(request: NextRequest) {
             },
         });
         return NextResponse.json("List delete successfully")
-    } catch (error: any) {
-        return NextResponse.json({ error: error.message }, { status: 400 });
+    } catch (error) {
+
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 
 }

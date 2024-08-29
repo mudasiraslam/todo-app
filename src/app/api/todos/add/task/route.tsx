@@ -12,8 +12,9 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json("Task created Successfully", { status: 201 })
 
-    } catch (error: any) {
-        return NextResponse.json(error.meassage, { status: 401 })
+    } catch (error) {
+
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 
 }

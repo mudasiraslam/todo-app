@@ -110,7 +110,7 @@ const TaskPage = () => {
             <Suspense fallback={
                 <div className="text-center mt-5">
                     <p className="text-sm md:text-lg">
-                        <SyncLoader color={currentTheme?.accent || '#F45050'} size={10} />
+                        <SyncLoader color={currentTheme?.accent} size={10} />
                     </p>
                 </div>
             }>

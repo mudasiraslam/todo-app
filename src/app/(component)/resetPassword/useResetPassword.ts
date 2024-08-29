@@ -1,3 +1,4 @@
+import { HandleResetPasswordParams } from "@/app/type/type.todo";
 import { useState } from "react";
 
 export const useResetPasswordForm = () => {
@@ -15,12 +16,12 @@ export const useResetPasswordForm = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleResetPassword = async (
-    resetToken: string,
-    axios: any,
-    toast: any,
-    router: any
-  ) => {
+  const handleResetPassword = async ({
+    resetToken,
+    axios,
+    toast,
+    router,
+  }: HandleResetPasswordParams) => {
     if (!newPassword || !confirmPassword) {
       toast.error("Please fill out both fields");
       return;

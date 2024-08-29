@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import BackIcon from '../../../../public/assets/icons/backIcon';
 import useTheme from "../themes/useThemes";
 import { useUserData, useImage, useProfileUpdate, useLogout } from './useSetting';
+import { color } from '@/app/constants/color';
 
 const Settings: React.FC = () => {
     const { name, setName, email, setEmail, image, setImage } = useUserData();
@@ -20,9 +21,9 @@ const Settings: React.FC = () => {
     const { handleLogout } = useLogout(router);
 
     return (
-        <main className={`bg-custom-radical bg-dotted-size ${currentTheme?.bgClass || 'bg-vibrantSpectrumBackground'}`}>
+        <main className={`bg-custom-radical bg-dotted-size ${currentTheme?.bgClass || `${color.defaultVibrantBg}`}`}>
             <div className={`flex justify-between px-[24px] bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6`}>
-                <div className={`flex justify-center ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+                <div className={`flex justify-center ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}>
                     <button
                         onClick={() => router.back()}
                         className='text-xl md:text-5xl'
@@ -30,14 +31,14 @@ const Settings: React.FC = () => {
                         <BackIcon />
                     </button>
                 </div>
-                <button onClick={handleLogout} className={`${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+                <button onClick={handleLogout} className={`${currentTheme?.textClass || `${color.defaultVibrantText}`}`}>
                     <LogoutIcon />
                 </button>
             </div>
             <div className='min-h-screen flex justify-center items-center'>
                 <div className='flex flex-col gap-3 items-center'>
                     <div className='flex justify-between px-[24px] py-2'>
-                        <h1 className={`font-bold text-4xl font-stint ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+                        <h1 className={`font-bold text-4xl font-stint ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}>
                             Settings<span>.</span>
                         </h1>
                     </div>
@@ -62,12 +63,12 @@ const Settings: React.FC = () => {
                                 onChange={handleImageChange}
                             />
                         </div>
-                        <h4 className={`font-plex-mono font-normal flex justify-center mt-2 ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+                        <h4 className={`font-plex-mono font-normal flex justify-center mt-2 ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}>
                             Profile Photo
                         </h4>
                     </label>
                     <div className="w-full">
-                        <label htmlFor="name" className={`block font-medium font-plex-mono text-xl px-5 py-1 ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+                        <label htmlFor="name" className={`block font-medium font-plex-mono text-xl px-5 py-1 ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}>
                             Name
                         </label>
                         <input
@@ -76,10 +77,10 @@ const Settings: React.FC = () => {
                             placeholder='Enter the name'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className={`w-full placeholder-plex-mono bg-transparent border-4 focus:outline-none px-5 py-2 rounded-[30px] md:max-w-[555px] md:max-h-[113px] ${currentTheme?.textClass || ''} ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}
+                            className={`w-full placeholder-plex-mono bg-transparent border-4 focus:outline-none px-5 py-2 rounded-[30px] md:max-w-[555px] md:max-h-[113px] ${currentTheme?.textClass || ''} ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`}`}
                             required
                         />
-                        <label htmlFor="email" className={`block font-medium font-plex-mono text-xl px-5 py-1 mt-3 ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+                        <label htmlFor="email" className={`block font-medium font-plex-mono text-xl px-5 py-1 mt-3 ${currentTheme?.textClass || `${color.defaultVibrantText}`}`}>
                             Email
                         </label>
                         <input
@@ -88,21 +89,21 @@ const Settings: React.FC = () => {
                             placeholder='Enter Email'
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className={`w-full placeholder-plex-mono bg-transparent border-4 py-2 px-5 rounded-[30px] md:max-w-[447px] md:max-h-[113px] ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'} ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}
+                            className={`w-full placeholder-plex-mono bg-transparent border-4 py-2 px-5 rounded-[30px] md:max-w-[447px] md:max-h-[113px] ${currentTheme?.textClass || `${color.defaultVibrantText}`} ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`}`}
                             required
                         />
                     </div>
                     <div className='py-3'>
                         <Link href={'/change-password'}>
                             <button
-                                className={`rounded-full px-5 py-2 bg-transparent border-4 w-full font-medium mb-3 ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'} ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}
+                                className={`rounded-full px-5 py-2 bg-transparent border-4 w-full font-medium mb-3 ${currentTheme?.textClass || `${color.defaultVibrantText}`} ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`}`}
                             >
                                 Change Password
                             </button>
                         </Link>
                         <br />
                         <button
-                            className={`rounded-full px-5 py-2 bg-transparent border-4 w-full font-medium ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'} ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}
+                            className={`rounded-full px-5 py-2 bg-transparent border-4 w-full font-medium ${currentTheme?.textClass || `${color.defaultVibrantText}`} ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`}`}
                             onClick={handleSaveChanges}
                             disabled={loading}
                         >

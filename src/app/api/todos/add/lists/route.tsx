@@ -4,7 +4,6 @@ import prismadb from '../../../../../libs/prismadb';
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
-    console.log('Request Body:', reqBody);
 
     const { title, email, theme } = reqBody;
 
@@ -23,7 +22,8 @@ export async function POST(request: NextRequest) {
 
 
     return new NextResponse(JSON.stringify({ message: 'List created successfully' }), { status: 201 });
-  } catch (error: any) {
-    return new NextResponse(error.message, { status: 500 });
+  } catch (error) {
+
+    return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
   }
 }

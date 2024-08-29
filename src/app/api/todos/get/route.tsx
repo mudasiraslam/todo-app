@@ -12,13 +12,8 @@ export async function POST(request: NextRequest) {
 
     const lists = await prismadb.list.findMany({ where: { email } });
     return NextResponse.json(lists, { status: 200 });
-  } catch (error: any) {
-    return NextResponse.json(
-      {
-        message: `Error: ${error.message}`,
-        success: false,
-      },
-      { status: 500 }
-    );
+  } catch (error) {
+
+    return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
   }
 }

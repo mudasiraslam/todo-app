@@ -1,8 +1,10 @@
 import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt';
 import prisma from './prismadb';
+import { NextResponse } from 'next/server';
+import { MailerParams } from '@/app/type/type.todo';
 
-export const mailer = async ({ email, emailType, userId, token }: any) => {
+export const mailer = async ({ email, emailType, userId, token }: MailerParams) => {
     try {
         const hashToken = await bcrypt.hash(token, 10);
 
@@ -36,8 +38,7 @@ export const mailer = async ({ email, emailType, userId, token }: any) => {
 
         const mailResponse = await transporter.sendMail(mailOptions);
         return mailResponse;
-    } catch (error: any) {
-
-        throw new Error(error.message);
+    } catch (error) {
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 }

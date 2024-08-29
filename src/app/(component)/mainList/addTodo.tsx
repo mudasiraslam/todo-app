@@ -4,6 +4,7 @@ import React from 'react';
 import useTodoForm from './useMainList';
 import BackIcon from '../../../../public/assets/icons/backIcon';
 import { themes } from '../themes/theme';
+import { color } from '@/app/constants/color';
 
 const AddTodo: React.FC = () => {
   const {
@@ -18,7 +19,7 @@ const AddTodo: React.FC = () => {
   } = useTodoForm();
 
   return (
-    <div className={`bg-custom-radical bg-dotted-size ${selectedTheme?.bgClass || 'bg-vibrantSpectrumBackground'}`}>
+    <div className={`bg-custom-radical bg-dotted-size ${selectedTheme?.bgClass || `${color.defaultVibrantBg}`}`}>
       <div className={` ${selectedTheme?.textClass || ''} bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6`}>
         <button onClick={() => router.back()} className='text-xl md:text-5xl '>
           <BackIcon />
@@ -53,7 +54,7 @@ const AddTodo: React.FC = () => {
             <div className='flex justify-center items-center text-center mt-8'>
               <button
                 type='submit'
-                className={`w-md px-6 py-2 font-plex-mono font-medium text-lg rounded-full bg-customOrange text-[#232020]`}
+                className={`w-md px-6 py-2 font-plex-mono font-medium text-lg rounded-full ${color.signupBorder} ${color.forgetPassText}`}
                 disabled={loading}
               >
                 {loading ? 'Saving...' : searchParams?.get('id') ? 'Update List' : 'Add List'}

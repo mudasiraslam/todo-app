@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         } else {
             return new NextResponse("Invalid request", { status: 400 });
         }
-    } catch (error: any) {
-        return new NextResponse("An error occurred while updating the password", { status: 500 });
+    } catch (error) {
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 }

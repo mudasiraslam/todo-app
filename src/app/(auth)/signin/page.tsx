@@ -8,7 +8,6 @@ import { color } from '../../constants/color';
 import Label from '../../(component)/lableInput/Label';
 import InputField from '../../(component)/inputField/InputField';
 import useAuth from './useSigninForm';
-import useTheme from './useSigninForm';
 
 
 
@@ -16,7 +15,6 @@ export default function SignInPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { login, loading } = useAuth();
-    const currentTheme = useTheme();
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -58,7 +56,7 @@ export default function SignInPage() {
                                                 onChange={(e) => setPassword(e.target.value)}
                                                 disabled={loading}
                                             />
-                                            <Link href={'/forget-password'} className="block text-right font-medium font-plex-mono text-[18px] mb-2 mt-2 text-[#F4F4F4]">Forget Password</Link>
+                                            <Link href={'/forget-password'} className={`block text-right font-medium font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}>Forget Password</Link>
                                         </div>
                                         <div>
                                             <GoogleBtn />
@@ -67,11 +65,11 @@ export default function SignInPage() {
                                             <button
                                                 disabled={loading}
                                                 type="submit"
-                                                className="w-full bg-orange-500 text-[#232020] font-plex-mono p-2 rounded-[30px]">
+                                                className={`w-full ${color.forgetPassbg} ${color.forgetPassText} font-plex-mono p-2 rounded-[30px]`}>
                                                 {loading ? 'Loading...' : 'Sign In'}
                                             </button>
-                                            <label htmlFor="account" className="block font-medium px-3 font-plex-mono text-[18px] mb-2 mt-2 text-[#F4F4F4]">
-                                                Do not have an account? <Link href={"/signup"} className="text-customOrange">Sign Up</Link>
+                                            <label htmlFor="account" className={`block font-medium px-3 font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}>
+                                                Do not have an account? <Link href={"/signup"} className={`${color.signupText}`}>Sign Up</Link>
                                             </label>
                                         </div>
                                     </form>

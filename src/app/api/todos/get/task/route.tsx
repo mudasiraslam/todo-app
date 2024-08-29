@@ -13,8 +13,8 @@ export async function POST(request: NextRequest) {
         const tasks = await prismadb.task.findMany({ where: { listId } });
 
         return NextResponse.json(tasks, { status: 200 });
-    } catch (error: any) {
-        return NextResponse.json(error.message, { status: 500 }
-        );
+    } catch (error) {
+
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
     }
 }

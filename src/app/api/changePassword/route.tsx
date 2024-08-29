@@ -3,6 +3,7 @@ import prismadb from "../../../libs/prismadb";
 import bcrypt from "bcrypt";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../libs/AuthOptions";
+import { ApiResponse } from "@/app/type/type.todo";
 
 export async function POST(request: NextRequest) {
     try {
@@ -30,7 +31,13 @@ export async function POST(request: NextRequest) {
         });
 
         return NextResponse.json({ message: "Password changed successfully" }, { status: 200 });
-    } catch (error: any) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    } catch (error) {
+        return NextResponse.json<ApiResponse>(
+            {
+                message: `Error ${error}`,
+                success: false,
+            },
+            { status: 500 }
+        );
     }
 }

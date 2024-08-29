@@ -1,4 +1,13 @@
 import { ReactNode } from "react";
+import { AxiosInstance } from "axios";
+import { toast as toastLib } from "react-hot-toast";
+
+export interface HandleResetPasswordParams {
+  resetToken: string;
+  axios: AxiosInstance;
+  toast: typeof toastLib;
+  router: any;
+}
 
 export interface inputProps {
   name: string;
@@ -88,3 +97,28 @@ export type ApiResponse = {
   message: string;
   success: boolean;
 };
+
+export type Token = {
+  token: string;
+};
+
+export interface TaskInput {
+  title: string;
+  listId: string;
+}
+
+export interface Task {
+  listId: string;
+}
+
+export interface UserData {
+  email: string;
+  name?: string;
+  imageBuffer?: string;
+}
+export interface MailerParams {
+  email: string;
+  emailType: "VERIFY" | "RESET";
+  userId: string;
+  token: string;
+}

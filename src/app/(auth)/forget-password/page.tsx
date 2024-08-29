@@ -45,7 +45,7 @@ const ForgetPasswordPage = () => {
                     <button
                       disabled={loading}
                       type="submit"
-                      className="w-full bg-orange-500 text-[#232020] font-plex-mono p-2 rounded-[30px]">
+                      className={`w-full ${color.forgetPassbg} ${color.forgetPassText} font-plex-mono p-2 rounded-[30px]`}>
                       {loading ? 'Sending...' : 'Send Reset Link'}
                     </button>
                   </div>

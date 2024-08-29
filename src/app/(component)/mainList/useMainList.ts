@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import { addTodo, updateTodo, fetchTodoList } from "../../redux/todoListSlice";
-import type { AppDispatch } from "../../redux/store";
+import {
+  addTodo,
+  updateTodo,
+  fetchTodoList,
+} from "../../../redux/todoListSlice";
+import type { AppDispatch } from "../../../redux/store";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { themes } from "../themes/theme";

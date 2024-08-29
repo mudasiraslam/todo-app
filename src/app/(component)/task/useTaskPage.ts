@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams, useRouter } from "next/navigation";
-import { fetchTasks, addTask, deleteTask } from "../../redux/taskSlice";
-import { RootState, AppDispatch } from "../../redux/store";
+import { fetchTasks, addTask, deleteTask } from "../../../redux/taskSlice";
+import { RootState, AppDispatch } from "../../../redux/store";
 import toast from "react-hot-toast";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { themes } from "../themes/theme";
@@ -36,9 +36,11 @@ export const useTaskPage = () => {
     }
   }, [themeValue]);
 
-  const tasks = useSelector((state: RootState) => state.tasks?.tasks || []);
-  const taskStatus = useSelector((state: RootState) => state.tasks?.status);
-  const error = useSelector((state: RootState) => state.tasks?.error);
+  const taskState = useSelector((state: RootState) => ({
+    tasks: state.tasks.tasks,
+    status: state.tasks.status,
+    error: state.tasks.error,
+  }));
 
   useEffect(() => {
     if (listId) {
@@ -97,9 +99,9 @@ export const useTaskPage = () => {
     handleAddTask,
     handleDeleteTask,
     handleCheckboxChange,
-    tasks,
-    taskStatus,
-    error,
+    tasks: taskState.tasks,
+    taskStatus: taskState.status,
+    error: taskState.error,
     completedTasks,
   };
 };

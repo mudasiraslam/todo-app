@@ -3,6 +3,7 @@ import prismadb from '../../../libs/prismadb';
 import bcrypt from "bcrypt";
 import crypto from 'crypto';
 import { mailer } from "../../../libs/mailer";
+import { ApiResponse } from "@/app/type/type.todo";
 
 export async function POST(req: Request) {
     try {
@@ -46,8 +47,14 @@ export async function POST(req: Request) {
             return new NextResponse("Error sending verification email", { status: 500 });
         }
 
-    } catch (error: any) {
-        return new NextResponse(error.message, { status: 500 });
+    } catch (error) {
+        return NextResponse.json<ApiResponse>(
+            {
+                message: `Error ${error}`,
+                success: false,
+            },
+            { status: 500 }
+        );
     }
 }
 

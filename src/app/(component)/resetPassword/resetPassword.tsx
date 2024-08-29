@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
@@ -8,7 +8,6 @@ import { useSearchParams } from 'next/navigation';
 import BackIcon from '../../../../public/assets/icons/backIcon';
 import Label from '../lableInput/Label';
 import InputField from '../inputField/InputField';
-import useTheme from "../themes/useThemes";
 import { useResetPasswordForm } from './useResetPassword';
 import { color } from '../../constants/color';
 
@@ -16,7 +15,6 @@ const ResetPassword: React.FC = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const resetToken = searchParams?.get('token') || '';
-    const { currentTheme } = useTheme();
     const {
         newPassword,
         confirmPassword,
@@ -31,7 +29,7 @@ const ResetPassword: React.FC = () => {
             className={`${color.bgColor} bg-custom-radical bg-dotted-size `}
         >
             <div
-                className={`flex justify-between px-[24px] bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 text-white`}
+                className={`flex justify-between px-[24px] bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 ${color.textWhite}`}
             >
                 <button
                     onClick={() => router.back()}
@@ -68,7 +66,14 @@ const ResetPassword: React.FC = () => {
                     </div>
                     <div className='py-3'>
                         <button
-                            onClick={() => handleResetPassword(resetToken, axios, toast, router)}
+                            onClick={() =>
+                                handleResetPassword({
+                                    resetToken,
+                                    axios,
+                                    toast,
+                                    router
+                                })
+                            }
                             disabled={loading}
                             className={`rounded-full px-4 py-1 bg-transparent w-full font-medium mb-3 ${color.textInput} border-4 ${color.inputBorder}`}
                         >
