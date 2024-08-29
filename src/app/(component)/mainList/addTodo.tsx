@@ -54,7 +54,7 @@ const AddTodo: React.FC = () => {
             <div className='flex justify-center items-center text-center mt-8'>
               <button
                 type='submit'
-                className={`w-md px-6 py-2 font-plex-mono font-medium text-lg rounded-full ${color.signupBorder} ${color.forgetPassText}`}
+                className={`w-md px-6 py-2 font-plex-mono font-medium text-lg rounded-full ${color.forgetPassbg} ${color.forgetPassText}`}
                 disabled={loading}
               >
                 {loading ? 'Saving...' : searchParams?.get('id') ? 'Update List' : 'Add List'}

@@ -14,6 +14,7 @@ const ForgetPasswordPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await sendResetLink(email);
+    router.push('/signin');
   };
 
   return (
