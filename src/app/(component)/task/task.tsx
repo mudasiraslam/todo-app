@@ -44,20 +44,17 @@ const TaskContent = () => {
                     </button>
                 </div>
 
-                {taskStatus === 'loading' && (
-                    <div className="text-center mt-5">
-                        <p className="text-sm md:text-lg">
-                            <SyncLoader
-                                color={currentTheme?.accent || '#F45050'}
-                                size={10}
-                            />
-                        </p>
-                    </div>
-                )}
-
                 {taskStatus === 'failed' && (
                     <div className='text-red-700 mb-10 text-lg text-center'>
                         {error}
+                    </div>
+                )}
+
+                {tasks.length === 0 && (
+                    <div className=' text-center mt-10'>
+                        <p className={`text-2xl md:text-3xl ${currentTheme?.textClass || ''}`}>
+                            ...
+                        </p>
                     </div>
                 )}
 
@@ -72,7 +69,10 @@ const TaskContent = () => {
                                     onChange={() => handleCheckboxChange(task.id, completedTasks[task.id] || false)}
                                 />
                                 <span className='relative inline-block'>
-                                    <p className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || ''} cursor-pointer`}>
+                                    <p
+                                        className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || ''} cursor-pointer 
+                                            ${completedTasks[task.id] ? 'line-through' : ''}`}
+                                    >
                                         {task.title}
                                     </p>
                                     <span

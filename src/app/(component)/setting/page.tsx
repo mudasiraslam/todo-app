@@ -107,7 +107,11 @@ const Settings: React.FC = () => {
                             onClick={handleSaveChanges}
                             disabled={loading}
                         >
-                            Save Changes
+                            {loading ? (
+                                "Loading..."
+                            ) : (
+                                "Save Changes"
+                            )}
                         </button>
                     </div>
                 </div>

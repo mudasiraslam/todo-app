@@ -115,8 +115,13 @@ export const useProfileUpdate = (
 
 export const useLogout = (router: any) => {
   const handleLogout = async () => {
-    await signOut({ redirect: false });
-    router.push("/signin");
+    try {
+      await signOut({ redirect: false });
+      toast.success("Logout successfully");
+      router.push("/signin");
+    } catch (error) {
+      toast.error("Logout failed");
+    }
   };
 
   return { handleLogout };

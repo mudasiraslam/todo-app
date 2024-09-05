@@ -16,4 +16,6 @@ export const color = {
   signupText: "text-orange-500",
   signupBorder: "border-orange-500",
   lableText: "text-[#F4F4F4]",
+  bgbtnColor: "bg-[#FF7315]",
+  deleteBg: "bg-[#dc2625]",
 };

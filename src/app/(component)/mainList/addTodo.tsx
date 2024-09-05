@@ -45,7 +45,7 @@ const AddTodo: React.FC = () => {
                   key={index}
                   type='button'
                   onClick={() => handleThemeClick(theme)}
-                  className={`px-6 py-1 rounded-3xl border ${selectedTheme?.value === theme.value ? 'border-4' : ''} ${theme.bgClass} ${theme.borderClass} ${theme.textClass}`}
+                  className={`px-6 py-1 rounded-3xl border-4 ${selectedTheme?.value === theme.value ? 'border-4' : ''} ${theme.bgClass} ${theme.borderClass} ${theme.textClass}`}
                 >
                   {theme.name}
                 </button>

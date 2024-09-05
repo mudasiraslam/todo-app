@@ -6,6 +6,7 @@ import Link from 'next/link';
 import TuneIcon from '../../../public/assets/tuneIcon';
 import useTheme from "../(component)/themes/useThemes";
 import { themes } from '../(component)/themes/theme';
+import { color } from '../constants/color';
 
 const ViewLists = () => {
     const { currentTheme, changeTheme } = useTheme();
@@ -18,31 +19,32 @@ const ViewLists = () => {
 
     return (
         <main
-            className={`bg-custom-radical bg-dotted-size min-h-screen  ${currentTheme?.bgClass} ${currentTheme?.borderClass}`}
+            className={`bg-custom-radical bg-dotted-size min-h-screen  ${color.bgColor}`}
         >
-            <div className={`bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 flex justify-between items-center p-6 ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}>
+            <div className={`bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6 flex justify-between items-center p-6 ${color.textInput}`}>
                 <div onClick={handleThemeChange}> <Navbar /></div>
                 <Link href={'/setting'}>
                     <TuneIcon />
                 </Link>
             </div>
             <div className="max-w-[633px] mx-auto">
-                <h1
-                    className={`w-full text-center mt-10 text-3xl md:text-4xl lg:text-6xl mb-10 font-bold font-stint tracking-wide ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'}`}
-                >
-                    Todo Lists
-                    <span className={`relative left-0 ${currentTheme?.borderClass || 'border-vibrantSpectrumAccent'}`}>.</span>
-                </h1>
+                <div className='max-w-336px max-h-140px'>
+                    <h1
+                        className={`flex justify-center w-full text-center  text-4xl md:text-5xl  xl:text-[124px] xl:leading-[139.98px] xl:mt-[16px] mb-10  font-bold font-stint ${color.textInput}`}
+                    >
+                        Todo Lists
+                        <span className={`relative left-0 `}>.</span>
+                    </h1>
+                </div>
                 <GetTodo />
                 <Link href="/add-todo">
                     <button
-                        className={`mt-5 text-sm md:text-2xl font-medium rounded-full ${currentTheme?.textClass || 'text-vibrantSpectrumPrimary'} ${currentTheme?.bgClass || 'border-vibrantSpectrumAccent'}`}
+                        className={`mt-5 text-sm md:text-2xl font-medium rounded-full ${color.textInput}`}
                     >
                         + Add List.
                     </button>
                 </Link>
-                <div className="mt-2">
-                </div>
+
             </div>
         </main>
     );
