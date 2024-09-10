@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { Todo, Task } from "../app/type/type.todo";
+import { Todo, Task } from "../../type/type";
 import axios from "axios";
 
 interface TodosState {

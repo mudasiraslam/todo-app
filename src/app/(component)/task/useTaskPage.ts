@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams, useRouter } from "next/navigation";
-import { fetchTasks, addTask, deleteTask } from "../../../redux/taskSlice";
+import {
+  fetchTasks,
+  addTask,
+  deleteTask,
+} from "../../../redux/slices/taskSlice";
 import { RootState, AppDispatch } from "../../../redux/store";
 import toast from "react-hot-toast";
 import { unwrapResult } from "@reduxjs/toolkit";
-import { themes } from "../themes/theme";
-import { Theme } from "../../type/type.todo";
+import { themes } from "../../../constants/themes/theme";
+import { Theme } from "../../../type/type";
 
 export const useTaskPage = () => {
   const searchParams = useSearchParams();
@@ -18,6 +22,7 @@ export const useTaskPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [currentTheme, setCurrentTheme] = useState<Theme | null>(null);
   const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [loading, setLoading] = useState(false);
   const [completedTasks, setCompletedTasks] = useState<Record<string, boolean>>(
     {}
   );
@@ -28,7 +33,7 @@ export const useTaskPage = () => {
       ? themes.find((theme) => theme.value === themeValue)
       : selectedThemeFromLocalStorage
       ? JSON.parse(selectedThemeFromLocalStorage)
-      : themes.find((theme) => theme.value === "vibrantSpectrum"); // Default theme
+      : themes.find((theme) => theme.value === "vibrantSpectrum");
 
     if (selectedTheme) {
       setCurrentTheme(selectedTheme);
@@ -53,7 +58,7 @@ export const useTaskPage = () => {
       toast.error("Task title is required");
       return;
     }
-
+    setLoading(true);
     try {
       const result = unwrapResult(
         await dispatch(
@@ -65,6 +70,8 @@ export const useTaskPage = () => {
       toast.success("Task added successfully");
     } catch (err) {
       toast.error("Error adding task");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -103,5 +110,6 @@ export const useTaskPage = () => {
     taskStatus: taskState.status,
     error: taskState.error,
     completedTasks,
+    loading,
   };
 };

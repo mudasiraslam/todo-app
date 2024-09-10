@@ -18,7 +18,7 @@ export const useUserData = () => {
           throw new Error("User email not found in session");
         }
 
-        const response = await axios.post("/api/profileUser", {
+        const response = await axios.post("/api/user-profile", {
           email: userEmail,
         });
 
@@ -26,7 +26,6 @@ export const useUserData = () => {
           const userData = response.data;
           setName(userData.name || "");
           setEmail(userData.email || "");
-          // setImage(userData.image || null);
           if (userData.image) {
             setImage(userData.image);
           } else {
@@ -77,7 +76,7 @@ export const useProfileUpdate = (
         reader.onloadend = async () => {
           imageBuffer = reader.result?.toString().split(",")[1];
 
-          const response = await axios.post("/api/profileUserUpdate", {
+          const response = await axios.post("/api/update-profile", {
             name,
             email,
             imageBuffer,
@@ -93,7 +92,7 @@ export const useProfileUpdate = (
         };
         reader.readAsDataURL(imageFile);
       } else {
-        const response = await axios.post("/api/profileUserUpdate", {
+        const response = await axios.post("/api/update-profile", {
           name,
           email,
         });

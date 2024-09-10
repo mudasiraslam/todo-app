@@ -3,8 +3,8 @@
 import React from 'react';
 import useTodoForm from './useMainList';
 import BackIcon from '../../../../public/assets/icons/backIcon';
-import { themes } from '../themes/theme';
-import { color } from '@/app/constants/color';
+import { themes } from '../../../constants/themes/theme';
+import { color } from '../../../constants/color';
 
 const AddTodo: React.FC = () => {
   const {
@@ -36,8 +36,7 @@ const AddTodo: React.FC = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder='List name'
                 required
-                className={`mt-1 block px-4 py-2 border-4 w-full rounded-full bg-transparent ${selectedTheme?.bgClass} ${selectedTheme?.borderClass} ${selectedTheme?.textClass}`}
-              />
+                className={`mt-1 block px-4 py-2 border-4 w-full rounded-full bg-transparent ${selectedTheme?.bgClass} ${selectedTheme?.borderClass} ${selectedTheme?.textClass}`} />
             </div>
             <div className={`flex flex-wrap justify-center gap-3 max-w-xl mx-auto mt-8`}>
               {themes.map((theme, index) => (
@@ -45,8 +44,7 @@ const AddTodo: React.FC = () => {
                   key={index}
                   type='button'
                   onClick={() => handleThemeClick(theme)}
-                  className={`px-6 py-1 rounded-3xl border-4 ${selectedTheme?.value === theme.value ? 'border-4' : ''} ${theme.bgClass} ${theme.borderClass} ${theme.textClass}`}
-                >
+                  className={`px-6 py-1 rounded-3xl border-4 ${selectedTheme?.value === theme.value ? 'border-4' : ''} ${theme.bgClass} ${theme.borderClass} ${theme.textClass}`} >
                   {theme.name}
                 </button>
               ))}
@@ -55,8 +53,7 @@ const AddTodo: React.FC = () => {
               <button
                 type='submit'
                 className={`w-md px-6 py-2 font-plex-mono font-medium text-lg rounded-full ${color.forgetPassbg} ${color.forgetPassText}`}
-                disabled={loading}
-              >
+                disabled={loading}>
                 {loading ? 'Saving...' : searchParams?.get('id') ? 'Update List' : 'Add List'}
               </button>
             </div>

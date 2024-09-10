@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTask, fetchTodoList } from "../../../redux/todoListSlice";
+import { deleteTask, fetchTodoList } from "../../../redux/slices/todoListSlice";
 import { RootState, AppDispatch } from "../../../redux/store";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
@@ -9,9 +9,11 @@ import { unwrapResult } from "@reduxjs/toolkit";
 
 const useTodoList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const todos = useSelector((state: RootState) => state.todos.items);
-  const status = useSelector((state: RootState) => state.todos.status);
-  const error = useSelector((state: RootState) => state.todos.error);
+  const {
+    items: todos,
+    status,
+    error,
+  } = useSelector((state: RootState) => state.todos);
   const { data: session } = useSession();
   const router = useRouter();
 

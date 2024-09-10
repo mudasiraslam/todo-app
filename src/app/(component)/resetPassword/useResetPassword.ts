@@ -1,4 +1,4 @@
-import { HandleResetPasswordParams } from "@/app/type/type.todo";
+import { HandleResetPasswordParams } from "@/type/type";
 import { useState } from "react";
 
 export const useResetPasswordForm = () => {
@@ -33,14 +33,14 @@ export const useResetPasswordForm = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post("/api/updateResetPassword", {
+      const response = await axios.post("/api/reset-password", {
         newPassword,
         resetToken,
       });
 
       if (response.status === 200) {
         toast.success("Password reset successfully");
-        router.push("/");
+        router.push("/signin");
       } else {
         toast.error("Failed to reset password");
       }

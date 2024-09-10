@@ -2,15 +2,15 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Profile from '../../../../public/Images/profile.png';
-import Edit from '../../../../public/assets/edit.svg';
-import { LogoutIcon } from '../../../../public/assets/icons/logout';
+import Profile from '../../../public/Images/profile.png';
+import Edit from '../../../public/assets/edit.svg'
+import { LogoutIcon } from '../../../public/assets/icons/logout';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import BackIcon from '../../../../public/assets/icons/backIcon';
-import useTheme from "../themes/useThemes";
+import BackIcon from '../../../public/assets/icons/backIcon';
+import useTheme from "../../constants/themes/useThemes";
 import { useUserData, useImage, useProfileUpdate, useLogout } from './useSetting';
-import { color } from '@/app/constants/color';
+import { color } from '@/constants/color';
 
 const Settings: React.FC = () => {
     const { name, setName, email, setEmail, image, setImage } = useUserData();
@@ -94,7 +94,7 @@ const Settings: React.FC = () => {
                         />
                     </div>
                     <div className='py-3'>
-                        <Link href={'/change-password'}>
+                        <Link href={'/changePassword'}>
                             <button
                                 className={`rounded-full px-5 py-2 bg-transparent border-4 w-full font-medium mb-3 ${currentTheme?.textClass || `${color.defaultVibrantText}`} ${currentTheme?.borderClass || `${color.defaultVibrantBorder}`}`}
                             >

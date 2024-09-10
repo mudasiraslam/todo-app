@@ -3,7 +3,7 @@ import prismadb from '../../../libs/prismadb';
 import bcrypt from "bcrypt";
 import crypto from 'crypto';
 import { mailer } from "../../../libs/mailer";
-import { ApiResponse } from "@/app/type/type.todo";
+import { ApiResponse } from "@/type/type";
 
 export async function POST(req: Request) {
     try {

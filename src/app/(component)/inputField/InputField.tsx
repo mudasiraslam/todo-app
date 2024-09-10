@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { InputFieldProps } from '../../type/type.todo';
+import { InputFieldProps } from '../../../type/type';
 const InputField: FC<InputFieldProps> = ({ id, type, placeholder, className, value, onChange, disabled = false, loading = false }) => {
     return (
         <input

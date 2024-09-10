@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from '../../../libs/prismadb';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
-import { ApiResponse } from "@/app/type/type.todo";
+import { ApiResponse } from "@/type/type";
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        const verificationLink = `${process.env.NEXTAUTH_URL}/reset-password?token=${verificationToken}`;
+        const verificationLink = `${process.env.NEXTAUTH_URL}/resetPassword?token=${verificationToken}`;
         console.log(verificationLink);
 
         const mailOptions = {

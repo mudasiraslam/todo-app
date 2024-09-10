@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt';
 import prisma from './prismadb';
 import { NextResponse } from 'next/server';
-import { MailerParams } from '@/app/type/type.todo';
+import { MailerParams } from '@/type/type';
 
 export const mailer = async ({ email, emailType, userId, token }: MailerParams) => {
     try {

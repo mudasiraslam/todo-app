@@ -21,7 +21,9 @@ const useChangePassword = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post("/api/changePassword", { newPassword });
+      const response = await axios.post("/api/change-password", {
+        newPassword,
+      });
 
       if (response.status === 200) {
         toast.success("Password changed successfully");

@@ -2,7 +2,7 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 import { useVerifyEmail } from "../../../hooks/useVerifyEmail";
-import { color } from "../../constants/color";
+import { color } from "../../../constants/color";
 
 function VerifyEmail() {
     const { verifed, error, verifyUserEmail } = useVerifyEmail();

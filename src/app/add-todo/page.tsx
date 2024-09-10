@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         description: "You can add todo list & There Task.",
     },
 };
-const AddTodo = dynamic(() => import('../(component)/mainList/addTodo'), {
+const AddTodo = dynamic(() => import('../(component)/mainList/mainList'), {
     ssr: false,
 });
 

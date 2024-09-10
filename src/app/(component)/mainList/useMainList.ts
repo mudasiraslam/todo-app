@@ -5,12 +5,12 @@ import {
   addTodo,
   updateTodo,
   fetchTodoList,
-} from "../../../redux/todoListSlice";
+} from "../../../redux/slices/todoListSlice";
 import type { AppDispatch } from "../../../redux/store";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { themes } from "../themes/theme";
-import { Theme } from "../../type/type.todo";
+import { themes } from "../../../constants/themes/theme";
+import { Theme } from "../../../type/type";
 
 const useTodoForm = () => {
   const [title, setTitle] = useState("");
@@ -51,7 +51,6 @@ const useTodoForm = () => {
 
     try {
       const todoId = searchParams?.get("id") || "";
-
       if (todoId) {
         await dispatch(
           updateTodo({ id: todoId, title, theme: selectedTheme.value })
@@ -74,7 +73,6 @@ const useTodoForm = () => {
       router.push("/");
     } catch (error) {
       toast.error("Error saving todo");
-      console.error("SaveTodo Error:", error);
     } finally {
       setLoading(false);
     }

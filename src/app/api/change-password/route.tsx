@@ -3,7 +3,7 @@ import prismadb from "../../../libs/prismadb";
 import bcrypt from "bcrypt";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../libs/AuthOptions";
-import { ApiResponse } from "@/app/type/type.todo";
+import { ApiResponse } from "@/type/type";
 
 export async function POST(request: NextRequest) {
     try {

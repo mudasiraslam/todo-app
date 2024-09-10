@@ -1,4 +1,4 @@
-import { Theme } from "../../type/type.todo";
+import { Theme } from "../../type/type";
 
 export const themes: Theme[] = [
     {

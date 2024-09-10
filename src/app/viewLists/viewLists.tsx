@@ -4,9 +4,9 @@ import Navbar from '../(component)/navbar/Navbar';
 import GetTodo from "../(component)/getTodo/getTodo";
 import Link from 'next/link';
 import TuneIcon from '../../../public/assets/tuneIcon';
-import useTheme from "../(component)/themes/useThemes";
-import { themes } from '../(component)/themes/theme';
-import { color } from '../constants/color';
+import useTheme from "../../constants/themes/useThemes";
+import { themes } from '../../constants/themes/theme';
+import { color } from '@/constants/color';
 
 const ViewLists = () => {
     const { currentTheme, changeTheme } = useTheme();

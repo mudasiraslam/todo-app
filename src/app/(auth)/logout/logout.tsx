@@ -1,5 +1,5 @@
 "use client"
-import { color } from '@/app/constants/color'
+import { color } from '../../../constants/color'
 import { signOut } from 'next-auth/react'
 import React from 'react'
 

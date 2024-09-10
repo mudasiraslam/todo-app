@@ -5,13 +5,14 @@ import { useRouter } from "next/navigation";
 
 const useForgetPassword = () => {
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
   const router = useRouter();
 
   const sendResetLink = async (email: string) => {
     setLoading(true);
     try {
       const lowercaseEmail = email.toLowerCase();
-      const response = await axios.post("/api/forgetPassword", {
+      const response = await axios.post("/api/forget-password", {
         email: lowercaseEmail,
       });
       toast.success(response.data);
@@ -22,7 +23,19 @@ const useForgetPassword = () => {
     }
   };
 
-  return { sendResetLink, loading, router };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await sendResetLink(email);
+    router.push("/signin");
+  };
+
+  return {
+    loading,
+    email,
+    setEmail,
+    handleSubmit,
+    router,
+  };
 };
 
 export default useForgetPassword;

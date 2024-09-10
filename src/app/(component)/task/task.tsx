@@ -7,7 +7,6 @@ import { useTaskPage } from './useTaskPage';
 
 const TaskContent = () => {
     const {
-        router,
         title,
         currentTheme,
         newTaskTitle,
@@ -17,6 +16,7 @@ const TaskContent = () => {
         handleCheckboxChange,
         tasks,
         taskStatus,
+        loading,
         error,
         completedTasks
     } = useTaskPage();
@@ -32,15 +32,17 @@ const TaskContent = () => {
                     <input
                         type='text'
                         value={newTaskTitle}
+                        disabled={loading}
                         onChange={(e) => setNewTaskTitle(e.target.value)}
                         className={`${currentTheme?.textClass || ''} ${currentTheme?.borderClass || ''} w-full font-medium placeholder:opacity-100 bg-transparent border-4 rounded-2xl px-2 py-1.5`}
                         placeholder='New Task Title'
                     />
                     <button
                         onClick={handleAddTask}
+                        disabled={loading}
                         className={`rounded-full md:w-[150px] border-4 w-full text-sm font-medium ml-3 ${currentTheme?.textClass || ''} ${currentTheme?.borderClass || ''}`}
                     >
-                        Add
+                        {loading ? "Adding..." : "Add"}
                     </button>
                 </div>
 

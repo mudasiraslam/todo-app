@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const useAuth = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const login = async (email: string, password: string) => {
     setLoading(true);
@@ -17,19 +19,27 @@ const useAuth = () => {
 
       if (loginResponse?.ok) {
         toast.success("Correct Login");
-        window.location.assign("/");
+        router.push("/");
       } else if (loginResponse?.error) {
         toast.error(loginResponse.error);
       }
     } catch (error) {
-      console.error("Login error:", error);
       toast.error("An error occurred during login");
     } finally {
       setLoading(false);
     }
   };
 
-  return { login, loading };
+  const handleSubmit = (
+    event: React.FormEvent,
+    email: string,
+    password: string
+  ) => {
+    event.preventDefault();
+    login(email, password);
+  };
+
+  return { login, loading, handleSubmit };
 };
 
 export default useAuth;

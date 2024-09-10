@@ -2,8 +2,8 @@
 
 import React from 'react';
 import useTodoList from './useTodoList';
-import { themes } from '../themes/theme';
-import { color } from '@/app/constants/color';
+import { themes } from '../../../constants/themes/theme';
+import { color } from '@/constants/color';
 import SyncLoader from "react-spinners/SyncLoader";
 
 const TodoList: React.FC = () => {

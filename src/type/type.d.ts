@@ -53,6 +53,23 @@ export interface Theme {
   bgClass: string;
   borderClass: string;
 }
+export interface SignUpFormFields {
+  name: string;
+  setName: (value: string) => void;
+  email: string;
+  setEmail: (value: string) => void;
+  password: string;
+  setPassword: (value: string) => void;
+  confirmPassword: string;
+  setConfirmPassword: (value: string) => void;
+}
+
+export type SignInFormFields = {
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
+};
 
 export interface InputFieldProps {
   id: string;
@@ -63,7 +80,23 @@ export interface InputFieldProps {
   disabled?: boolean;
   loading?: boolean;
   className?: string;
+  label?: string;
 }
+export interface LabelProps {
+  htmlFor: string;
+  text: string;
+  className?: string;
+}
+
+export type InputFieldProps = {
+  id: string;
+  label: string;
+  type: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
+};
 
 export interface LabelProps {
   htmlFor: string;

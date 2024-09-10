@@ -2,7 +2,7 @@ import { signIn } from 'next-auth/react';
 import React from 'react';
 import GoogleImg from '../../../../public/assets/google.svg';
 import Image from 'next/image';
-import { color } from '@/app/constants/color';
+import { color } from '@/constants/color';
 
 function GoogleBtn() {
     const signInWithGoogle = (e: React.MouseEvent<HTMLButtonElement>) => {
