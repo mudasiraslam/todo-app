@@ -15,9 +15,9 @@ import { Theme } from "../../../type/type";
 export const useTaskPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const listId = searchParams?.get("page");
+  const listId = searchParams?.get("page") ?? null;
   const title = searchParams?.get("title") ?? "";
-  const themeValue = searchParams?.get("theme");
+  const themeValue = searchParams?.get("theme") ?? null;
 
   const dispatch = useDispatch<AppDispatch>();
   const [currentTheme, setCurrentTheme] = useState<Theme | null>(null);
@@ -42,9 +42,9 @@ export const useTaskPage = () => {
   }, [themeValue]);
 
   const taskState = useSelector((state: RootState) => ({
-    tasks: state?.tasks?.tasks,
-    status: state?.tasks?.status,
-    error: state?.tasks?.error,
+    tasks: state?.tasks?.tasks ?? [],
+    status: state?.tasks?.status ?? "idle",
+    error: state?.tasks?.error ?? null,
   }));
 
   useEffect(() => {
@@ -58,14 +58,16 @@ export const useTaskPage = () => {
       toast.error("Task title is required");
       return;
     }
+    if (!listId) {
+      toast.error("List ID is required to add a task");
+      return;
+    }
     setLoading(true);
     try {
       const result = unwrapResult(
-        await dispatch(
-          addTask({ title: newTaskTitle, listId: listId as string })
-        )
+        await dispatch(addTask({ title: newTaskTitle, listId }))
       );
-      await dispatch(fetchTasks(listId as string));
+      await dispatch(fetchTasks(listId));
       setNewTaskTitle("");
       toast.success("Task added successfully");
     } catch (err) {
