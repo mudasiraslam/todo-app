@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       return new NextResponse('Title & Email is required', { status: 400 });
     }
 
-    const newList = await prismadb.list.create({
+    await prismadb.list.create({
       data: {
         title,
         email,
