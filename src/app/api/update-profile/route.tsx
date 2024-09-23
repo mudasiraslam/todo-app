@@ -1,7 +1,7 @@
 
 
 import { NextRequest, NextResponse } from "next/server";
-import prisma from '../../../libs/prismadb';
+import prisma from '../../../libs/prisma.config';
 import { UserData } from "@/type/type";
 
 export async function POST(request: NextRequest) {

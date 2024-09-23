@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prismadb from '../../../libs/prismadb';
+import prismadb from '../../../libs/prisma.config';
 import bcrypt from "bcrypt";
 import crypto from 'crypto';
 import { mailer } from "../../../libs/mailer";

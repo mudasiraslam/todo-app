@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from '../../../libs/prismadb';
+import prisma from '../../../libs/prisma.config';
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
 

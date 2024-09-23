@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prismadb from "../../../libs/prismadb";
+import prismadb from "../../../libs/prisma.config";
 import bcrypt from "bcrypt";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../libs/AuthOptions";

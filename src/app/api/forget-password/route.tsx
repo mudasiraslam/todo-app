@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from '../../../libs/prismadb';
+import prisma from '../../../libs/prisma.config';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import { ApiResponse } from "@/type/type";

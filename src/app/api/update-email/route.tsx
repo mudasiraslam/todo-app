@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prismadb from '../../../libs/prismadb';
+import prismadb from '../../../libs/prisma.config';
 
 export async function PUT(request: NextRequest) {
     try {

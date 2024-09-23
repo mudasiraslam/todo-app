@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import bcrypt from 'bcrypt';
-import prisma from './prismadb';
+import prisma from './prisma.config';
 import { NextResponse } from 'next/server';
 import { MailerParams } from '@/type/type';
 
