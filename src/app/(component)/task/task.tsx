@@ -52,7 +52,7 @@ const TaskContent = () => {
                     </div>
                 )}
 
-                {tasks.length === 0 && (
+                {tasks?.length === 0 && (
                     <div className=' text-center mt-10'>
                         <p className={`text-2xl md:text-3xl ${currentTheme?.textClass || ''}`}>
                             ...
@@ -75,7 +75,7 @@ const TaskContent = () => {
                                         className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || ''} cursor-pointer 
                                             ${completedTasks[task.id] ? 'line-through' : ''}`}
                                     >
-                                        {task.title}
+                                        {task?.title}
                                     </p>
                                     <span
                                         className={`absolute left-0 right-0 bottom-1 border-b-4 ${currentTheme?.borderClass || 'border-transparent'}`}

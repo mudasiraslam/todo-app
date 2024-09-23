@@ -20,10 +20,8 @@ export async function POST(request: NextRequest) {
       },
     });
 
-
-    return new NextResponse(JSON.stringify({ message: 'List created successfully' }), { status: 201 });
+    return NextResponse.json({ message: "List created successfully" }, { status: 201 });
   } catch (error) {
-
     return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
   }
 }
