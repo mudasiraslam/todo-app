@@ -42,9 +42,9 @@ export const useTaskPage = () => {
   }, [themeValue]);
 
   const taskState = useSelector((state: RootState) => ({
-    tasks: state.tasks.tasks,
-    status: state.tasks.status,
-    error: state.tasks.error,
+    tasks: state?.tasks?.tasks,
+    status: state?.tasks?.status,
+    error: state?.tasks?.error,
   }));
 
   useEffect(() => {
