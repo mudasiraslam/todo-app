@@ -1,7 +1,7 @@
 import { SignUpFormFields } from "../type/type";
 import { SignInFormFields } from "../type/type";
 import { InputFieldProps } from "../type/type";
-import { ChangeEvent } from "react";
+
 export const getInputFields = ({
   name,
   setName,
@@ -76,31 +76,21 @@ export const getSignInFields = ({
   },
 ];
 
-// type InputFieldProps = {
-//     id: string;
-//     label: string;
-//     type: string;
-//     placeholder: string;
-//     value: string;
-//     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-//     disabled?: boolean;
-// };
-
 export const resetPasswordFields: InputFieldProps[] = [
   {
     id: "newPassword",
     label: "New Password",
     type: "password",
     placeholder: "Enter your new password",
-    value: "", // will be overridden in component
-    onChange: () => {}, // will be overridden in component
+    value: "",
+    onChange: () => {},
   },
   {
     id: "confirmPassword",
     label: "Confirm Password",
     type: "password",
     placeholder: "Confirm your new password",
-    value: "", // will be overridden in component
-    onChange: () => {}, // will be overridden in component
+    value: "",
+    onChange: () => {},
   },
 ];
