@@ -27,6 +27,7 @@ const useSignUpForm = () => {
     confirmPassword,
     setConfirmPassword,
   });
+
   const register = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {

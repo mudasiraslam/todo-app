@@ -4,7 +4,7 @@ import React from 'react';
 import useTodoList from './useTodoList';
 import { themes } from '../../../constants/themes/theme';
 import { color } from '@/constants/color';
-import SyncLoader from "react-spinners/SyncLoader";
+import SyncLoader from 'react-spinners/SyncLoader';
 
 const TodoList: React.FC = () => {
   const { todos, status, error, handleDeleteTask, handleUpdateClick, handleTitleClick } = useTodoList();
@@ -22,17 +22,17 @@ const TodoList: React.FC = () => {
   }
 
   return (
-    <div className='max-w-[633px] h-auto mx-auto'>
+    <div className="max-w-[633px] h-auto mx-auto">
       <ul>
-        {todos.map(todo => {
-          const todoTheme = themes.find(theme => theme.value === todo.theme);
+        {todos.map((todo) => {
+          const todoTheme = themes.find((theme) => theme.value === todo.theme);
 
           return (
             <li
               className={`font-plex-mono px-2 font-medium text-xl md:text-3xl relative flex justify-between items-center text-center`}
               key={todo.id}
             >
-              <span className='relative inline-block'>
+              <span className="relative inline-block">
                 <p
                   onClick={() => handleTitleClick(todo.id, todo.title, todo.theme)}
                   className={`font-plex-mono font-medium text-xl md:text-3xl ${color.textInput}`}
@@ -41,10 +41,11 @@ const TodoList: React.FC = () => {
                   {todo.title}
                 </p>
                 <span
-                  className={`absolute left-0 right-0 bottom-1 border-b-4 ${todoTheme?.borderClass || 'border-default'}`}
+                  className={`absolute left-0 right-0 bottom-1 border-b-4 ${todoTheme?.borderClass || 'border-default'
+                    }`}
                 />
               </span>
-              <div className='mb-2'>
+              <div className="mb-2">
                 <button
                   onClick={() => handleUpdateClick(todo.id, todo.title, todo.theme)}
                   className={`mt-3 text-sm py-1 px-4 border-none rounded-full ${color.bgbtnColor} ${color.textInput}`}

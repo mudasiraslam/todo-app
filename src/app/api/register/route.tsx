@@ -40,13 +40,11 @@ export async function POST(req: Request) {
 
         const emailResponse = await mailer({ email, emailType: 'VERIFY', userId: newUser.id, token: verificationToken });
 
-
         if (emailResponse) {
             return NextResponse.json({ message: 'Verification email sent' });
         } else {
             return new NextResponse("Error sending verification email", { status: 500 });
         }
-
     } catch (error) {
         return NextResponse.json<ApiResponse>(
             {
@@ -57,4 +55,3 @@ export async function POST(req: Request) {
         );
     }
 }
-

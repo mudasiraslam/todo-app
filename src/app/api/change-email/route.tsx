@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from '../../../libs/prisma.config';
 import { ApiResponse } from "@/type/type";
 
-
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
@@ -20,7 +19,7 @@ export async function POST(request: NextRequest) {
             },
         });
         if (!user) {
-            return NextResponse.json('Invaild Token', { status: 400 });
+            return NextResponse.json('Invalid Token', { status: 400 });
         }
 
         await prisma.user.update({
@@ -32,10 +31,9 @@ export async function POST(request: NextRequest) {
             },
         });
 
-        return NextResponse.json("Email Change succefully", {
+        return NextResponse.json("Email Change successfully", {
             status: 201,
-        },
-        );
+        });
     } catch (error) {
         return NextResponse.json<ApiResponse>(
             {
@@ -45,5 +43,4 @@ export async function POST(request: NextRequest) {
             { status: 500 }
         );
     }
-
 }

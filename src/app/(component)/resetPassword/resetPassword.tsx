@@ -25,7 +25,7 @@ const ResetPassword: React.FC = () => {
         handleResetPassword,
     } = useResetPasswordForm();
 
-    const fields = resetPasswordFields.map(field => ({
+    const fields = resetPasswordFields.map((field) => ({
         ...field,
         value: field.id === 'newPassword' ? newPassword : confirmPassword,
         onChange: field.id === 'newPassword' ? handleChangeNewPassword : handleChangeConfirmPassword,

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from 'react';
 import Navbar from '../../(component)/navbar/Navbar';
@@ -21,13 +21,16 @@ export default function SignInPage() {
         <>
             <main className={`bg-custom-radical bg-dotted-size ${color.bgColor}`}>
                 <div className="">
-                    <div className='bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6'>
+                    <div className="bg-dotted-size backdrop-blur-backdropBlur bg-blend-overlay py-6 pl-6">
                         <Navbar />
                     </div>
                     <div className="min-h-screen items-center justify-center">
                         <div className="">
-                            <div className='px-4'>
-                                <form onSubmit={(event) => handleSubmit(event, email, password)} className='max-w-[330px] mx-auto space-y-4 md:space-y-4 py-12'>
+                            <div className="px-4">
+                                <form
+                                    onSubmit={(event) => handleSubmit(event, email, password)}
+                                    className="max-w-[330px] mx-auto space-y-4 md:space-y-4 py-12"
+                                >
                                     {inputFields.map(({ id, label, type, placeholder, value, onChange }) => (
                                         <div key={id}>
                                             <Label htmlFor={id} text={label} />
@@ -42,7 +45,12 @@ export default function SignInPage() {
                                             />
                                         </div>
                                     ))}
-                                    <Link href={'/forget-password'} className={`block text-right font-medium font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}>Forget Password</Link>
+                                    <Link
+                                        href={'/forget-password'}
+                                        className={`block text-right font-medium font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}
+                                    >
+                                        Forget Password
+                                    </Link>
                                     <div>
                                         <GoogleBtn />
                                     </div>
@@ -50,11 +58,18 @@ export default function SignInPage() {
                                         <button
                                             disabled={loading}
                                             type="submit"
-                                            className={`w-full ${color.forgetPassbg} ${color.forgetPassText} font-plex-mono p-2 rounded-[30px]`}>
+                                            className={`w-full ${color.forgetPassbg} ${color.forgetPassText} font-plex-mono p-2 rounded-[30px]`}
+                                        >
                                             {loading ? 'Loading...' : 'Sign In'}
                                         </button>
-                                        <label htmlFor="account" className={`block font-medium px-3 font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}>
-                                            Do not have an account? <Link href={"/signup"} className={`${color.signupText}`}>Sign Up</Link>
+                                        <label
+                                            htmlFor="account"
+                                            className={`block font-medium px-3 font-plex-mono text-[18px] mb-2 mt-2 ${color.textInput}`}
+                                        >
+                                            Do not have an account?{' '}
+                                            <Link href={'/signup'} className={`${color.signupText}`}>
+                                                Sign Up
+                                            </Link>
                                         </label>
                                     </div>
                                 </form>

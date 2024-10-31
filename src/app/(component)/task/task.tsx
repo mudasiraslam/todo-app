@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react';
 import BackIcon from '../../../../public/assets/icons/backIcon';
-import SyncLoader from "react-spinners/SyncLoader";
+import SyncLoader from 'react-spinners/SyncLoader';
 import { useTaskPage } from './useTaskPage';
 
 const TaskContent = () => {
@@ -18,7 +18,7 @@ const TaskContent = () => {
         taskStatus,
         loading,
         error,
-        completedTasks
+        completedTasks,
     } = useTaskPage();
 
     return (
@@ -42,7 +42,7 @@ const TaskContent = () => {
                         disabled={loading}
                         className={`rounded-full md:w-[150px] border-4 w-full text-sm font-medium ml-3 ${currentTheme?.textClass || ''} ${currentTheme?.borderClass || ''}`}
                     >
-                        {loading ? "Adding..." : "Add"}
+                        {loading ? 'Adding...' : 'Add'}
                     </button>
                 </div>
 
@@ -54,9 +54,7 @@ const TaskContent = () => {
 
                 {tasks?.length === 0 && (
                     <div className=' text-center mt-10'>
-                        <p className={`text-2xl md:text-3xl ${currentTheme?.textClass || ''}`}>
-                            ...
-                        </p>
+                        <p className={`text-2xl md:text-3xl ${currentTheme?.textClass || ''}`}>...</p>
                     </div>
                 )}
 
@@ -72,14 +70,12 @@ const TaskContent = () => {
                                 />
                                 <span className='relative inline-block'>
                                     <p
-                                        className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || ''} cursor-pointer 
-                                            ${completedTasks?.[task?.id] ? 'line-through' : ''}`}
+                                        className={`font-plex-mono font-medium text-xl md:text-3xl ${currentTheme?.textClass || ''} cursor-pointer ${completedTasks?.[task?.id] ? 'line-through' : ''
+                                            }`}
                                     >
                                         {task?.title ?? 'Untitled Task'}
                                     </p>
-                                    <span
-                                        className={`absolute left-0 right-0 bottom-1 border-b-4 ${currentTheme?.borderClass || 'border-transparent'}`}
-                                    />
+                                    <span className={`absolute left-0 right-0 bottom-1 border-b-4 ${currentTheme?.borderClass || 'border-transparent'}`} />
                                 </span>
                             </div>
                             <div>
@@ -111,8 +107,8 @@ const TaskPage = () => {
 
             <Suspense
                 fallback={
-                    <div className="text-center mt-5">
-                        <p className="text-sm md:text-lg">
+                    <div className='text-center mt-5'>
+                        <p className='text-sm md:text-lg'>
                             <SyncLoader color={currentTheme?.accent} size={10} />
                         </p>
                     </div>

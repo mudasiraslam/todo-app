@@ -7,8 +7,7 @@ import { color } from '@/constants/color';
 function GoogleBtn() {
     const signInWithGoogle = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const callbackUrl =
-            process.env.NEXT_PUBLIC_NEXTAUTH_URL || 'http://localhost:3000/';
+        const callbackUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL || 'http://localhost:3000/';
         signIn('google', { callbackUrl });
     };
 
@@ -20,10 +19,10 @@ function GoogleBtn() {
             >
                 <Image
                     src={GoogleImg}
-                    className='w-[28px] h-[28px] ml-2'
-                    alt='Google logo'
+                    className="w-[28px] h-[28px] ml-2"
+                    alt="Google logo"
                 />
-                <span className='ml-2'>Sign Up with Google</span>
+                <span className="ml-2">Sign Up with Google</span>
             </button>
         </>
     );
